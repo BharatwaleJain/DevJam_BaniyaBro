@@ -1,17 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import Comp from './MyComponents/diffitems/diffitems';
+import Head from './MyComponents/header/head';
 
 import ImageUploader from './MyComponents/imagein/imagein';
 
 function App() {
   return (
     <>
-    <ImageUploader/>
-    
-    <Comp/>
+    <Head/>
+    <div className='board'>
 
-    <input type="number" placeholder='Price'/>
+    <ImageUploader/>
+
+
+    </div>
+
+
+    
+    
+    
+
+    
     </>
 
   );

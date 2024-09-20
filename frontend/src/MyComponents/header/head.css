@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    height: 20%;
+}
+
+.header img{
+    height: 90px;
+    width: auto
+}
