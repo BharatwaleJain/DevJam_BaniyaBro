@@ -4,19 +4,21 @@ import axios from 'axios'
 import image from "./searchimg.png"
 
 const ImageUploader = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState();
+  const [error, setError] = useState(null);
 
   // Handle file input change (either upload or capture)
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // Get the first file
     const formdata = new FormData()
     formdata.append('image',file)
+    
     const response = axios.post('http://localhost:8000/upload', formdata, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    console.log(response.data);
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response.data);
     
     if (file) {
       const reader = new FileReader();
@@ -46,15 +48,15 @@ const ImageUploader = () => {
       {/* Conditionally render the image preview */}
       {selectedImage && (
         <div>
-       
+          <img src={selectedImage || image}
+            alt='Uploaded'
+            style={{ width: '300px', height: '300px', border: '1px solid #ccc', borderRadius: '5px' }} />
         </div>
       )}
 
-<img src={selectedImage || image}
-alt='Uploaded'
-style={{ width: '300px', height: 'auto', border: '1px solid #ccc', borderRadius: '5px' }} />
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
-<button >Search Item</button>
+      <button>Search Item</button>
     </div>
   );
 };

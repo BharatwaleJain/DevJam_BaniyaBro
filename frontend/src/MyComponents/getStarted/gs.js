@@ -5,15 +5,10 @@ const Gs = () => {
   return (
     <div>
         <img src={image}/>
-
         <div className='info'>
-
             <p>About</p>
-
         </div>
-
-        <button onClick="./"
-      
+        <button onClick="./">Get Started</button>
     </div>
   )
 }

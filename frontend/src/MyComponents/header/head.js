@@ -5,9 +5,7 @@ import logo from './logo.png';
 const Head = () => {
   return (
     <div className='header'>
-
         <img src={logo}/>
-      
     </div>
   )
 }
