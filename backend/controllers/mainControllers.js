@@ -4,19 +4,23 @@ const { getJson } = require("serpapi");
 const multer = require('multer');
 const path = require('path')
 
-
-
-exports.home = (req,res) => {
-    try{
-       res.status(200).send("HOME PAGE"); 
-    }catch(err){
-        res.status(404).json({
-            status : "Fail",
-            message : err
-        })
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/images');  
+    }, 
+    filename : (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
     }
-}
+})
 
+exports.upload = multer({
+    storage : storage
+})
+
+
+exports.getImage = async (req,res) => {
+    console.log(req.file);
+};
 
 exports.getLens = async (req,res) => {
     try{
