@@ -1,8 +1,12 @@
 const fs = require('fs');
 const { getJson } = require("serpapi");
-const User = require('../models/model');
 
-exports.home = async (req,res) => {
+const multer = require('multer');
+const path = require('path')
+
+
+
+exports.home = (req,res) => {
     try{
        res.status(200).send("HOME PAGE"); 
     }catch(err){
@@ -32,3 +36,4 @@ exports.getLens = async (req,res) => {
         })
     }
 }
+

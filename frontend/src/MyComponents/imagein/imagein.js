@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import "./imagein.css"
+import axios from 'axios'
 
 
 const ImageUploader = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState();
 
   // Handle file input change (either upload or capture)
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // Get the first file
+    const formdata = new FormData()
+    formdata.append('file',file)
+    axios.post('http://localhost:8000/upload',formdata).then(res => console.log(res)).catch(err => console.log(err))
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
