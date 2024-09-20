@@ -3,9 +3,8 @@ const {formidable, errors} = require('formidable');
 const fs = require('fs');
 const axios = require('axios');
 const { getJson } = require("serpapi");
-
-const multer = require('multer');
-const path = require('path')
+const { json } = require('express');
+const User = require('../models/model')
 
 const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
 
@@ -40,7 +39,31 @@ exports.getImage = async (req,res) => {
           });
  
          fs.writeFileSync('./imgUrlData.json',JSON.stringify(imgBBResponse.data));
-         console.log(imgBBResponse.data);
+         //console.log(JSON.stringify(imgBBResponse.data));
+         const imgUrl = JSON.parse(fs.readFileSync('./imgUrlData.json', 'utf-8'));
+         console.log(imgUrl.data.url)
+
+         
+        console.log("getlens");
+        const googleLensResults = await new Promise((resolve, reject) => {
+            getJson(
+              {
+                engine: "google_lens",
+                url: imgUrl.data.url,
+                api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+              },
+              (json) => {
+                if (json) {
+                  resolve(json.visual_matches[0]);
+                } else {
+                  reject(new Error('No visual matches found in Google Lens.'));
+                }
+              }
+            );
+          });
+          fs.writeFileSync('lensdata.json', JSON.stringify(googleLensResults));
+        console.log("Google Lens visual matches:", googleLensResults);
+        console.log("Aa gaya")
          return
 
      } catch (err) {
@@ -53,27 +76,8 @@ exports.getImage = async (req,res) => {
          res.end(String(err));
          return;
      }
+     
+
 }
 
-
-
-
-exports.getLens = async (req,res) => {
-    try{
-        getJson({
-            engine: "google_lens",
-            url: "./file_1726852864231.png",
-            api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40"
-        }, (json) => {
-            fs.writeFileSync('lensdata.json',JSON.stringify(json["visual_matches"]));
-            console.log(json["visual_matches"]);
-        });
-       res.status(200).send("GOT DATA") 
-    }catch(err){
-        res.status(404).json({
-            status : "Fail",
-            message : err
-        })
-    }
-}
 
