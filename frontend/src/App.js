@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import comp from './MyComponents/diffitems';
+import Comp from './MyComponents/diffitems/diffitems';
 
-import ImageUploader from './MyComponents/imagein';
+import ImageUploader from './MyComponents/imagein/imagein';
 
 function App() {
   return (
     <>
     <ImageUploader/>
-    <comp/>
+    <p>Hello</p>
+    <Comp/>
 
     <input type="number" placeholder='Price'/>
     </>
