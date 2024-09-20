@@ -12,13 +12,14 @@ function App() {
     <div className='board'>
 
     <ImageUploader/>
+    
 
 
     </div>
 
 
     
-    
+    <Comp/>
     
 
     
