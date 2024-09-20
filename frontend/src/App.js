@@ -10,19 +10,8 @@ function App() {
     <>
     <Head/>
     <div className='board'>
-
     <ImageUploader/>
-    
-
-
-    </div>
-
-
-    
-    <Comp/>
-    
-
-    
+    </div>    
     </>
 
   );
