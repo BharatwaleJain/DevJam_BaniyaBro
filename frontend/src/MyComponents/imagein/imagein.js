@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./imagein.css"
 import axios from 'axios'
-
+import image from "./searchimg.png"
 
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -24,6 +24,7 @@ const ImageUploader = () => {
 
   return (
     <div className='imagecomp'>
+      <img src={image}/>
       <h2>Upload or Capture an Image</h2>
       
       {/* File input with capture feature for camera */}
