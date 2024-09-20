@@ -9,8 +9,9 @@
 }
 
 .header img{
-    max-height: 150px;
-    height:100% ;
+    padding-top: 20px;
+    max-height: 120px;
+    height:50% ;
     width: auto;
     margin: 0 20px;
 }
