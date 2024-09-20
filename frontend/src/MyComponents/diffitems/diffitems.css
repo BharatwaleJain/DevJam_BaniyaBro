@@ -1,3 +1,19 @@
-.hello{
-    color: aqua;
+.card{
+    background-color:#1e1e1e;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    flex-direction: row;
+    margin: 20px;
+    height: 30%;
+}
+.card img{
+    
+    max-height: 90%;
+    height: 100px;
+
+    margin: 20px;
+    
+
 }

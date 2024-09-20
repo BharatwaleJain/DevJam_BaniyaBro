@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <ImageUploader/>
-    <p>Hello</p>
+    
     <Comp/>
 
     <input type="number" placeholder='Price'/>
