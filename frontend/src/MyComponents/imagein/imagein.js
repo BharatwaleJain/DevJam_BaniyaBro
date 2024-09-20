@@ -4,7 +4,7 @@ import axios from 'axios'
 import image from "./searchimg.png"
 
 const ImageUploader = () => {
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Handle file input change (either upload or capture)
   const handleImageChange = (e) => {
@@ -29,11 +29,14 @@ const ImageUploader = () => {
 
   return (
     <div className='imagecomp'>
-      <img src={image}/>
-      <h2>Upload or Capture an Image</h2>
+      <label htmlFor="file-input" className="custom-file-upload">
+  Upload Image
+</label>
+      
       
       {/* File input with capture feature for camera */}
       <input
+        id="file-input"
         type="file"
         accept="image/*" // Accept all image types
         capture="environment" // Use "user" for front camera, "environment" for back camera
@@ -43,10 +46,15 @@ const ImageUploader = () => {
       {/* Conditionally render the image preview */}
       {selectedImage && (
         <div>
-          <h3>Preview:</h3>
-          <img src={selectedImage} alt="Uploaded" style={{ width: '300px', height: 'auto' }} />
+       
         </div>
       )}
+
+<img src={selectedImage || image}
+alt='Uploaded'
+style={{ width: '300px', height: 'auto', border: '1px solid #ccc', borderRadius: '5px' }} />
+
+<button >Search Item</button>
     </div>
   );
 };
