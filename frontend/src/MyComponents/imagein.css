@@ -1,0 +1,17 @@
+*{
+    color: aliceblue;
+}
+
+.imagecomp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 100%;
+    width: auto;
+}
+
+
+
+.imagecomp input{
+    display: block;
+}
