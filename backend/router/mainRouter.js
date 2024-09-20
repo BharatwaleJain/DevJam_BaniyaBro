@@ -3,6 +3,7 @@ const mainController = require(`./../controllers/mainControllers`);
 
 const router = express.Router();
 
-router.route('/upload').post(mainController.upload.single('file'), mainController.getImage);
+router.route('/upload').post(mainController.getImage);
+router.route('/img').get(mainController.getLens);
 
 module.exports = router;

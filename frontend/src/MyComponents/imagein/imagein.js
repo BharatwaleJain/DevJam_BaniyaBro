@@ -10,8 +10,13 @@ const ImageUploader = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // Get the first file
     const formdata = new FormData()
-    formdata.append('file',file)
-    axios.post('http://localhost:8000/upload',formdata).then(res => console.log(res)).catch(err => console.log(err))
+    formdata.append('image',file)
+    const response = axios.post('http://localhost:8000/upload', formdata, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response.data);
     
     if (file) {
       const reader = new FileReader();
