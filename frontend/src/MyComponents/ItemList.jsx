@@ -1,12 +1,12 @@
 import React,{ useState, useEffect } from 'react';
-import Item from './items';
+import Item from './Items';
 import axios from 'axios'
-import data from './Assets/sample.json';
+import data from '../Assets/sample.json';
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [Loading, setLoading] = useState(true);
+  const [Error, setError] = useState(null);
 
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const ItemList = () => {
         <Item
           key={index}
           link={item.prodURL}
-          name={item.title.length > 15 ? item.title.slice(0, 12) + '...' : item.title}
+          name={item.title.length > 12 ? item.title.slice(0, 9) + '...' : item.title}
           price={item.price}
           imgSrc={item.imgUrl}
         />

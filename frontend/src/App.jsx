@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import './MyComponents/global.css';
-import ImageUploader from './MyComponents/imagein/imagein';
+import ImageUploader from './MyComponents/Upload';
 import Loader from './MyComponents/Loader';
 import Logo from './MyComponents/Logo';
 import Email from './MyComponents/Email';
 import Header from './MyComponents/Header';
-import ItemList from './MyComponents/itemList';
+import ItemList from './MyComponents/ItemList';
 import Price from './MyComponents/Price';
 import bgVideo from './Assets/bgvideo.mp4';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import "./global.css";
 
 const Item = ({ link, name, price, imgSrc }) => {
-
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className='card-link'>
       <div className='card'>

@@ -4,7 +4,7 @@ import "./global.css";
 
 const Loader = () => {
   const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [FadeOut, setFadeOut] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Loader = () => {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-    }, 3200);
+    }, 3100);
     return () => clearTimeout(timer);
   }, []);
 
