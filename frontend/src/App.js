@@ -5,26 +5,29 @@ import Head from './MyComponents/header/head';
 import ImageUploader from './MyComponents/imagein/imagein';
 import LoadingScreen from './MyComponents/LoadingScreen';
 import Item from './MyComponents/items';
+import ItemList from './MyComponents/itemList';
 import Price from './MyComponents/Price';
 
 function App() {
   return (
     <Router>
       <Head />
-      <div className="board">
         <Routes>
-          <Route path="/" element={<LoadingScreen />} />
-          <Route path="/upload" element={<ImageUploader />} />
+          <Route path="/" element={
+            <div className="board">
+              <LoadingScreen />
+            </div>} />
+          <Route path="/upload" element={
+            <div className="board">
+              <ImageUploader />
+            </div>} />
           <Route path="/list" element={
             <div id='contain'>
               <Price />
-              <Item />
-              <Item />
-              <Item />
+              <ItemList />
             </div>
           } />
         </Routes>
-      </div>
     </Router>
     );
 }
