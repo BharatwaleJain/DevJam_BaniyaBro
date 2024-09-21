@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./global.css";
-import axios from 'axios';
 import { FaBell } from 'react-icons/fa';
 
 const Price = () => {
@@ -12,7 +11,7 @@ const Price = () => {
 
   return (
     <div className='inputinfo' id="price-box">
-      {/* Input for price */}
+      {/* Input for Price */}
       <input
         type="text"
         placeholder="Enter Price"
@@ -20,11 +19,11 @@ const Price = () => {
         onChange={(e) => setPrice(e.target.value)}
         className="txt-input"
         id="target-price"
-                onKeyPress={(e) => {
-                  if (!/[0-9]/.test(e.key)) {
-                    e.preventDefault();
-                  }
-                }}
+        onKeyPress={(e) => {
+          if (!/[0-9]/.test(e.key)) {
+            e.preventDefault();
+          }
+        }}
       />
       <button onClick={handleNotify} disabled={!price}>
         <FaBell /> {}
