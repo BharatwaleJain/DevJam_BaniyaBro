@@ -6,7 +6,6 @@ import image from "./searchimg.png";
 
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState();
-  const [price, setPrice] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -62,16 +61,7 @@ const ImageUploader = () => {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {/* Input for price */}
-      <input
-        type="number"
-        placeholder="Enter Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        className="price-input"
-      />
-
-      <button onClick={handleNavigate} disabled={!selectedImage || !price}>
+      <button onClick={handleNavigate} disabled={!selectedImage}>
         Search Item
       </button>
     </div>

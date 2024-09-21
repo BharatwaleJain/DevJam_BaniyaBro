@@ -41,6 +41,20 @@ body, html {
     margin-bottom: 10px;
   }
   
+  .txt-input {
+    background-color: rgba(0, 0, 0, 0.1); /* Black background with 10% opacity */
+    border: 1px solid rgb(241, 119, 13); /* Orange solid border */
+    color: rgb(241, 119, 13); /* Orange text */
+    font-weight: bold; /* Bold text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   button {
     display: inline-block;
     padding: 10px 20px;

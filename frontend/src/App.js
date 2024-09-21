@@ -5,6 +5,7 @@ import Head from './MyComponents/header/head';
 import ImageUploader from './MyComponents/imagein/imagein';
 import LoadingScreen from './MyComponents/LoadingScreen';
 import Item from './MyComponents/items';
+import Price from './MyComponents/Price';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/upload" element={<ImageUploader />} />
           <Route path="/list" element={
             <div>
+              <Price />
               <Item />
               <Item />
               <Item />
