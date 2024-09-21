@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./global.css";
-import image from "./Assets/Loader.png";
+import image from "./header/logo.png";
 
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);

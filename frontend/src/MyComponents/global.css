@@ -1,3 +1,7 @@
+*{
+  font-family: 'DM Sans';
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -86,7 +90,7 @@ body, html {
     margin: 0;
     max-width: 15%;
     height: 100%;
-    background-color: rgb(241, 119, 13);
+    background-color: #fab002;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -99,7 +103,7 @@ body, html {
     display: inline-block;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: rgb(241, 119, 13);
+    background-color: #fab002;
     color: white;
     border: none;
     border-radius: 5px;

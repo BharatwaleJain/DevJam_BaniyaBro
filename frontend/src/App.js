@@ -11,21 +11,26 @@ import Price from './MyComponents/Price';
 function App() {
   return (
     <Router>
-      <Head />
         <Routes>
           <Route path="/" element={
             <div className="board">
               <LoadingScreen />
             </div>} />
           <Route path="/upload" element={
+            <>
+            <Head />
             <div className="board">
               <ImageUploader />
-            </div>} />
+            </div>
+            </>} />
           <Route path="/list" element={
+            <>
+            <Head />
             <div id='contain'>
               <Price />
               <ItemList />
             </div>
+            </>
           } />
         </Routes>
     </Router>
