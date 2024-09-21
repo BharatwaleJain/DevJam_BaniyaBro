@@ -135,7 +135,7 @@ body, html {
     }
   }
 
-  .card {
+  .card  {
     background-color: #1e1e1e;
     color: aliceblue;
     display: flex;
@@ -144,22 +144,24 @@ body, html {
     text-align: left;
     flex-direction: row;
     height: 75%;
-    max-height: 200px;
+    max-height: 150px;
     margin-bottom: 20px;
     border-radius: 30px;
     opacity: 0.7;
     padding: 10px;
     border: 1px solid orange;
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     box-sizing: border-box;
+    margin-left: 20px;
+    margin-right: 20px;
 }
   
   .card img {
-    max-height: 80%;
-    height: 80%;
-    width: 80%;
-    max-width: 25%;
+    
+    height: 100px;
+    width: auto;
+    
     border-radius: 10px;
     margin-right: 20px;
   }
