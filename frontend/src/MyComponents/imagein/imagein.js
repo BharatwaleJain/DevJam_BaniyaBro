@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./imagein.css"
-import axios from 'axios'
-import image from "./searchimg.png"
+import "./imagein.css";
+import axios from 'axios';
+import image from "./searchimg.png";
 
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState();
+  const [price, setPrice] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   // Handle file input change (either upload or capture)
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0]; // Get the first file
-    const formdata = new FormData()
-    formdata.append('image',file)
-    
-    const response = axios.post('http://localhost:8000/upload', formdata, {
+    const formdata = new FormData();
+    formdata.append('image', file);
+
+    try {
+      const response = await axios.post('http://localhost:8000/upload', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(response.data);
-    
+    } catch (err) {
+      console.error(err);
+      setError('Failed to upload image');
+      return;
+    }
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -30,8 +37,7 @@ const ImageUploader = () => {
       reader.readAsDataURL(file); // Convert image file to base64
     }
   };
-  
-  
+
   const handleNavigate = () => {
     navigate('/list');
   };
@@ -39,10 +45,9 @@ const ImageUploader = () => {
   return (
     <div className='imagecomp'>
       <label htmlFor="file-input" className="custom-file-upload">
-  Upload Image
-</label>
-      
-      
+        Upload Image
+      </label>
+
       {/* File input with capture feature for camera */}
       <input
         id="file-input"
@@ -51,19 +56,32 @@ const ImageUploader = () => {
         capture="environment" // Use "user" for front camera, "environment" for back camera
         onChange={handleImageChange}
       />
-      
+
       {/* Conditionally render the image preview */}
       {selectedImage && (
         <div>
-          <img src={selectedImage || image}
+          <img
+            src={selectedImage || image}
             alt='Uploaded'
-            style={{ width: '300px', height: '300px', border: '1px solid #ccc', borderRadius: '5px' }} />
+            style={{ width: '300px', height: '300px', border: '1px solid #ccc', borderRadius: '5px' }}
+          />
         </div>
       )}
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <button onClick={handleNavigate}>Search Item</button>
+      {/* Input for price */}
+      <input
+        type="number"
+        placeholder="Enter Price"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        className="price-input"
+      />
+
+      <button onClick={handleNavigate} disabled={!selectedImage || !price}>
+        Search Item
+      </button>
     </div>
   );
 };

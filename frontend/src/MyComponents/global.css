@@ -80,30 +80,73 @@ body, html {
     align-items: center;
     text-align: left;
     flex-direction: row;
-    margin: 20px;
     height: 30%;
     margin: 20px 50px;
     border-radius: 30px;
-    border-color: orange;
     opacity: 0.7;
-    
-  }
+    padding: 20px;
+    border: 1px solid orange;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
   
   .card img {
-    height: 90%;
-    width: 25%;
+    width: 150px;
+    height: auto;
     border-radius: 10px;
-    margin: 15px 30px;
+    margin-right: 20px;
   }
   
   .card:hover {
     background-color: rgb(72, 65, 65);
-    border-width: 5px;
-    margin: 20px;
+    border-width: 2px;
   }
   
   .card-link {
     text-decoration: none;
     color: inherit;
     display: block;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .card-content h1 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .card-content .price {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #f1a10d;
+  }
+  
+  @media (max-width: 600px) {
+    .card {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  
+    .card img {
+      width: 100px;
+      margin-right: 10px;
+    }
+  
+    .card-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+  
+    .card-content h1 {
+      font-size: 1.2em;
+    }
+  
+    .card-content .price {
+      font-size: 1em;
+    }
   }
