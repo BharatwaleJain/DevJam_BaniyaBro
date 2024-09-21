@@ -4,7 +4,7 @@ const fs = require('fs');
 const axios = require('axios');
 const { getJson } = require("serpapi");
 const { json } = require('express');
-const User = require('../models/model')
+const Product = require('../models/model')
 
 const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
 
@@ -38,18 +38,14 @@ exports.getImage = async (req,res) => {
               }
           });
  
-         fs.writeFileSync('./imgUrlData.json',JSON.stringify(imgBBResponse.data));
-         //console.log(JSON.stringify(imgBBResponse.data));
-
-         const imgUrl = JSON.parse(fs.readFileSync('./imgUrlData.json', 'utf-8'));
-         console.log(imgUrl.data.url)
+         console.log(JSON.stringify(imgBBResponse.data.data.url))
 
          //Running image in Google lens api
          const googleLensResults = await new Promise((resolve, reject) => {
             getJson(
               {
                 engine: "google_lens",
-                url: imgUrl.data.url,
+                url:imgBBResponse.data.data.url,
                 api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
               },
               (json) => {
@@ -62,21 +58,39 @@ exports.getImage = async (req,res) => {
             );
           });
          
-        //Writing the lens data
-        fs.writeFileSync('lensdata.json', JSON.stringify(googleLensResults));
-        console.log("Google Lens visual matches:", googleLensResults);
+        //console.log("Google Lens visual matches:", googleLensResults);
 
         //Shopping API
+        const shoppingResults = await new Promise((resolve, reject) => {
+            getJson(
+              {
+                engine: "google_shopping",
+                q: googleLensResults.title,
+                api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+                gl:"in"
+              },
+              (json) => {
+                if (json) {
+                  resolve(json.shopping_results.slice(0,5));
+                } else {
+                  reject(new Error('No visual matches found in Google Lens.'));
+                }
+              }
+            );
+          });
         
-        getJson({
-            engine: "google_shopping",
-            q: googleLensResults.title,
-            api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
-            gl:"in"
-        }, (json) => {
-            fs.writeFileSync('shop.json', JSON.stringify(json));
-            console.log("All shopping results: ",json["shopping_results"]);
-        });
+        
+          //Creating document in MondoDB
+        for(let i = 0;i<5; i++){
+            const newProduct = await Product.create({
+                title : shoppingResults[i].title,
+                prodURL : shoppingResults[i].link,
+                price : shoppingResults[i].price,
+                imgUrl : shoppingResults[i].thumbnail
+            })
+            console.log(`${i}:Saved`)
+    }
+        console.log("All shopping results: ",shoppingResults);
         return
 
      } catch (err) {

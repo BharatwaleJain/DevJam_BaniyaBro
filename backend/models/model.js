@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 const { type } = require('os');
 
-const UserSchema = new mongoose.Schema({
-    imgage : String
+const productsSchema = new mongoose.Schema({
+    title : String,
+    prodURL : String,
+    price : String,
+    imgUrl : String,
 })
 
-const User = mongoose.model('User',UserSchema);
-module.exports = User;
+const Product = mongoose.model('Product',productsSchema);
+module.exports = Product;
