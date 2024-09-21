@@ -40,12 +40,12 @@ exports.getImage = async (req,res) => {
  
          fs.writeFileSync('./imgUrlData.json',JSON.stringify(imgBBResponse.data));
          //console.log(JSON.stringify(imgBBResponse.data));
+
          const imgUrl = JSON.parse(fs.readFileSync('./imgUrlData.json', 'utf-8'));
          console.log(imgUrl.data.url)
 
-         
-        console.log("getlens");
-        const googleLensResults = await new Promise((resolve, reject) => {
+         //Running image in Google lens api
+         const googleLensResults = await new Promise((resolve, reject) => {
             getJson(
               {
                 engine: "google_lens",
@@ -61,10 +61,23 @@ exports.getImage = async (req,res) => {
               }
             );
           });
-          fs.writeFileSync('lensdata.json', JSON.stringify(googleLensResults));
+         
+        //Writing the lens data
+        fs.writeFileSync('lensdata.json', JSON.stringify(googleLensResults));
         console.log("Google Lens visual matches:", googleLensResults);
-        console.log("Aa gaya")
-         return
+
+        //Shopping API
+        
+        getJson({
+            engine: "google_shopping",
+            q: googleLensResults.title,
+            api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+            gl:"in"
+        }, (json) => {
+            fs.writeFileSync('shop.json', JSON.stringify(json));
+            console.log("All shopping results: ",json["shopping_results"]);
+        });
+        return
 
      } catch (err) {
          // example to check for a very specific error
