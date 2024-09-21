@@ -27,7 +27,7 @@ const LoadingScreen = () => {
         <div className="instructions">
           <img src={image} alt="Instructions" className="instruction-image" />
           <p>Follow the instructions to upload your image.</p>
-          <button onClick={handleNavigate}>Go to Upload Page</button>
+          <button onClick={handleNavigate}>Go to Upload</button>
         </div>
       )}
     </div>

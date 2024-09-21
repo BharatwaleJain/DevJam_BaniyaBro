@@ -73,3 +73,37 @@ body, html {
       font-size: 18px;
     }
   }
+  
+  .card {
+    background-color: #1e1e1e;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    flex-direction: row;
+    margin: 20px;
+    height: 30%;
+    margin: 20px 50px;
+    border-radius: 30px;
+    border-color: orange;
+    opacity: 0.7;
+  }
+  
+  .card img {
+    height: 90%;
+    width: 25%;
+    border-radius: 10px;
+    margin: 15px 30px;
+  }
+  
+  .card:hover {
+    background-color: rgb(72, 65, 65);
+    border-width: 5px;
+    margin: 20px;
+  }
+  
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }

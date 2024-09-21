@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./imagein.css"
 import axios from 'axios'
 import image from "./searchimg.png"
@@ -6,6 +7,7 @@ import image from "./searchimg.png"
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Handle file input change (either upload or capture)
   const handleImageChange = (e) => {
@@ -27,6 +29,11 @@ const ImageUploader = () => {
       };
       reader.readAsDataURL(file); // Convert image file to base64
     }
+  };
+  
+  
+  const handleNavigate = () => {
+    navigate('/list');
   };
 
   return (
@@ -56,7 +63,7 @@ const ImageUploader = () => {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <button>Search Item</button>
+      <button onClick={handleNavigate}>Search Item</button>
     </div>
   );
 };
