@@ -1,12 +1,24 @@
-const http = require('http');
 const {formidable, errors} = require('formidable');
 const fs = require('fs');
 const axios = require('axios');
 const { getJson } = require("serpapi");
 const { json } = require('express');
-const Product = require('../models/model')
+const { Product } = require('../models/model')
+const { User } = require('../models/model')
 
 const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
+
+let emailValue; 
+
+exports.getEmail = async (req,rea) => {
+    emailValue  = req.body;
+    console.log(emailValue.emailValue)
+    if (!emailValue) {
+        console.log('not Received email');
+        return res.status(400).json({ error: 'Email is required' });
+    }
+
+}
 
 exports.getImage = async (req,res) => {
     const form = formidable({});
@@ -38,7 +50,7 @@ exports.getImage = async (req,res) => {
               }
           });
  
-         console.log(JSON.stringify(imgBBResponse.data.data.url))
+         //console.log(JSON.stringify(imgBBResponse.data.data.url))
 
          //Running image in Google lens api
          const googleLensResults = await new Promise((resolve, reject) => {
@@ -79,32 +91,54 @@ exports.getImage = async (req,res) => {
             );
           });
         
-        
+        const num =[];
           //Creating document in MondoDB
         for(let i = 0;i<5; i++){
             const newProduct = await Product.create({
-                title : shoppingResults[i].title,
+                title : shoppingResults[i].title.slice(0,12),
                 prodURL : shoppingResults[i].link,
                 price : shoppingResults[i].price,
                 imgUrl : shoppingResults[i].thumbnail
             })
+            num.push(newProduct._id.toString());
             console.log(`${i}:Saved`)
-    }
-        console.log("All shopping results: ",shoppingResults);
+        }
+
+        const newUser = await User.create({
+            mail : emailValue.emailValue,
+            productId : num 
+        })
         return
 
      } catch (err) {
          // example to check for a very specific error
-         if (err.code === errors.maxFieldsExceeded) {
- 
-         }
          console.error(err);
          res.writeHead(err.httpCode || 400, { 'Content-Type': 'text/plain' });
          res.end(String(err));
          return;
-     }
-     
-
+     }    
 }
 
-
+exports.sendData = async (req, res) => {
+    try{
+        const prodData = []
+        for(let i=0;i<5;i++){
+            let currentId = await User.findOne({mail : "kushalagrawal3011@gmail.com"})
+            console.log(currentId.productId[i]);
+            let x = await Product.findById(currentId.productId[i])
+            prodData.push(x)
+        }
+        console.log(prodData)
+        return res.status(200).json({
+            status : "Success",
+            result : prodData.length,
+            data : prodData
+        })
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+            status : "Fail",
+            message: 'server error'
+        })   
+    }
+}

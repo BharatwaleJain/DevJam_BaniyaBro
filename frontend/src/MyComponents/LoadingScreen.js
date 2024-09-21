@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./global.css";
-import axios from 'axios';
 import image from "./Assets/Loader.png";
 
 const LoadingScreen = () => {
@@ -18,6 +17,21 @@ const LoadingScreen = () => {
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
     setEmail(emailValue);
+    fetch('http://localhost:8000/submit-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ emailValue }), // Send emailValue to the backend
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
 
     if (!validateEmail(emailValue)) {
       setError('Invalid Email Address Format');
