@@ -14,13 +14,17 @@ function App() {
         <Routes>
           <Route path="/" element={<LoadingScreen />} />
           <Route path="/upload" element={<ImageUploader />} />
+          <Route path="/list" element={
+            <div>
+              <Item />
+              <Item />
+              <Item />
+            </div>
+          } />
         </Routes>
-        <Item />
-        <Item />
-        <Item />
       </div>
     </Router>
-  );
+    );
 }
 
 export default App;
