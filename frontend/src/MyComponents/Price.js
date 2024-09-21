@@ -12,7 +12,7 @@ const Price = () => {
   };
 
   return (
-    <div>
+    <div className='inputinfo'>
       {/* Input for price */}
       <input
         type="number"
@@ -21,7 +21,7 @@ const Price = () => {
         onChange={(e) => setPrice(e.target.value)}
         className="txt-input"
       />
-      <button onClick={handleNavigate} disabled={!price}>Notify</button>
+      <button onClick={handleNavigate} disabled={!price}>N</button>
     </div>
   );
 }

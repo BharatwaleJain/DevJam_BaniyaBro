@@ -41,19 +41,7 @@ body, html {
     margin-bottom: 10px;
   }
   
-  .txt-input {
-    background-color: rgba(0, 0, 0, 0.1); /* Black background with 10% opacity */
-    border: 1px solid rgb(241, 119, 13); /* Orange solid border */
-    color: rgb(241, 119, 13); /* Orange text */
-    font-weight: bold; /* Bold text */
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    max-width: 400px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+  
 
   button {
     display: inline-block;
@@ -87,6 +75,7 @@ body, html {
     }
   }
   
+  
   .card {
     background-color: #1e1e1e;
     color: aliceblue;
@@ -94,7 +83,7 @@ body, html {
     align-items: center;
     text-align: left;
     flex-direction: row;
-    height: 30%;
+    height: 60%;
     margin: 20px 50px;
     border-radius: 30px;
     opacity: 0.7;
@@ -106,7 +95,7 @@ body, html {
 }
   
   .card img {
-    width: 150px;
+    width: 30%;
     height: auto;
     border-radius: 10px;
     margin-right: 20px;
@@ -164,3 +153,38 @@ body, html {
       font-size: 1em;
     }
   }
+
+  .txt-input {
+    background-color: rgba(0, 0, 0, 0.1); /* Black background with 10% opacity */
+     
+    color: rgb(241, 119, 13); /* Orange text */
+    font-weight: bold; /* Bold text */
+    padding:10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 0;
+    max-width: 92%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .txt-input:focus{
+    outline: none;
+  }
+
+  .inputinfo{
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(241, 119, 13);
+    border-radius: 10px;
+  }
+
+  .inputinfo button{
+    margin: 0;
+    width: 8%;
+    
+  }
+
+
