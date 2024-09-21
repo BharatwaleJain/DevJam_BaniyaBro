@@ -11,24 +11,18 @@ const ImageUploader = () => {
   const navigate = useNavigate();
 
   // Handle file input change (either upload or capture)
-  const handleImageChange = async (e) => {
+  const handleImageChange = (e) => {
     const file = e.target.files[0]; // Get the first file
     const formdata = new FormData();
     formdata.append('image', file);
 
-    try {
-      const response = await axios.post('http://localhost:8000/upload', formdata, {
+    const response = axios.post('http://localhost:8000/upload', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(response.data);
-    } catch (err) {
-      console.error(err);
-      setError('Failed to upload image');
-      return;
-    }
-
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -37,7 +31,7 @@ const ImageUploader = () => {
       reader.readAsDataURL(file); // Convert image file to base64
     }
   };
-
+    
   const handleNavigate = () => {
     navigate('/list');
   };
@@ -45,9 +39,9 @@ const ImageUploader = () => {
   return (
     <div className='imagecomp'>
       <label htmlFor="file-input" className="custom-file-upload">
-        Upload Image
-      </label>
-
+  Upload Image
+</label>
+       
       {/* File input with capture feature for camera */}
       <input
         id="file-input"
@@ -56,15 +50,13 @@ const ImageUploader = () => {
         capture="environment" // Use "user" for front camera, "environment" for back camera
         onChange={handleImageChange}
       />
-
+      
       {/* Conditionally render the image preview */}
       {selectedImage && (
         <div>
-          <img
-            src={selectedImage || image}
+          <img src={selectedImage || image}
             alt='Uploaded'
-            style={{ width: '300px', height: '300px', border: '1px solid #ccc', borderRadius: '5px' }}
-          />
+            style={{ width: '300px', height: '300px', border: '1px solid #ccc', borderRadius: '5px' }} />
         </div>
       )}
 
