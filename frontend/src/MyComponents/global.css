@@ -55,9 +55,10 @@ body, html {
   }
 
   #target-price{
-    border-right: none;
+    border: none;
     border-radius: 5px 0 0 5px; 
-    max-width: 92%;
+    max-width: 85%;
+    margin: 0px;
   }
   #target-price:focus{
     outline: none;
@@ -66,18 +67,17 @@ body, html {
   .inputinfo{
     display: flex;
     align-items: center;
-    border: 0;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid rgb(241, 119, 13);
-    border-radius: 5px;
+    border-radius: 6px;
     width: 100%;
-    max-width: 92%;
+    max-width: 80%;
     margin-bottom: 20px;
   }
 
   .inputinfo button {
     margin: 0;
-    max-width: 8%;
+    max-width: 15%;
     height: 100%;
     background-color: rgb(241, 119, 13);
     color: white;
@@ -109,7 +109,6 @@ body, html {
   }
   
   button:disabled {
-    background-color: #ccc;
     cursor: not-allowed;
   }
 
