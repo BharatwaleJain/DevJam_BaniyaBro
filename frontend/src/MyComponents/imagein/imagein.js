@@ -38,7 +38,7 @@ const ImageUploader = () => {
   return (
     <div className='imagecomp'>
       <label htmlFor="file-input" className="custom-file-upload">
-  Upload Image
+  Scan Image
 </label>
        
       {/* File input with capture feature for camera */}

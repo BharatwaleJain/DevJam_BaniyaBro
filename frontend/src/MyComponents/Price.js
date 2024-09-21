@@ -11,15 +11,20 @@ const Price = () => {
   };
 
   return (
-    <div className='inputinfo'>
+    <div className='inputinfo' id="price-box">
       {/* Input for price */}
       <input
-        type="number"
+        type="text"
         placeholder="Enter Price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         className="txt-input"
         id="target-price"
+                onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
       />
       <button onClick={handleNotify} disabled={!price}>
         <FaBell /> {}
