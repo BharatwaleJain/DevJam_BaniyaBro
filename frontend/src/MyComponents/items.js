@@ -1,7 +1,14 @@
 import React from 'react';
 import "./global.css";
+import axios from 'axios'; 
+
 
 const Item = () => {
+  axios.get('http://localhost:8000/getData').then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.log(error);
+  })
   const link = "https://www.amazon.com";
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className='card-link'>

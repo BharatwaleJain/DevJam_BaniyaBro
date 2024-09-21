@@ -10,13 +10,14 @@ const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
 
 let emailValue; 
 
-exports.getEmail = async (req,rea) => {
+exports.getEmail = async (req,res) => {
     emailValue  = req.body;
-    console.log(emailValue.emailValue)
+    //console.log(emailValue.emailValue)
     if (!emailValue) {
         console.log('not Received email');
         return res.status(400).json({ error: 'Email is required' });
     }
+    req.emailValue = emailValue;
 
 }
 
@@ -121,9 +122,10 @@ exports.getImage = async (req,res) => {
 
 exports.sendData = async (req, res) => {
     try{
+        console.log(req.body)
         const prodData = []
         for(let i=0;i<5;i++){
-            let currentId = await User.findOne({mail : "kushalagrawal3011@gmail.com"})
+            let currentId = await User.findOne({mail : emailValue.emailValue})
             console.log(currentId.productId[i]);
             let x = await Product.findById(currentId.productId[i])
             prodData.push(x)
