@@ -9,7 +9,7 @@ import Email from './MyComponents/Email';
 import Header from './MyComponents/Header';
 import ItemList from './MyComponents/itemList';
 import Price from './MyComponents/Price';
-import bgVideo from './MyComponents/Assets/bgvideo.mp4';
+import bgVideo from './Assets/bgvideo.mp4';
 
 function App() {
   const videoRef = useRef(null);
