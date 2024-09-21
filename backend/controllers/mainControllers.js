@@ -122,11 +122,9 @@ exports.getImage = async (req,res) => {
 
 exports.sendData = async (req, res) => {
     try{
-        console.log(req.body)
         const prodData = []
         for(let i=0;i<5;i++){
             let currentId = await User.findOne({mail : emailValue.emailValue})
-            console.log(currentId.productId[i]);
             let x = await Product.findById(currentId.productId[i])
             prodData.push(x)
         }

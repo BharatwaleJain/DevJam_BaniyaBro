@@ -8,6 +8,7 @@ const ItemList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
     axios.get('http://localhost:8000/getData')
       .then((response) => {
@@ -26,7 +27,7 @@ const ItemList = () => {
 
   return (
     <div>
-      {data.items.map((item, index) => (
+      {items.map((item, index) => (
         <Item
           key={index}
           link={item.prodURL}

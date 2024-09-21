@@ -1,15 +1,8 @@
 import React from 'react';
 import "./global.css";
-import axios from 'axios'; 
 
 const Item = ({ link, name, price, imgSrc }) => {
 
-  axios.get('http://localhost:8000/getData').then(function (response) {
-    console.log(response);
-  }).catch(function (error) {
-    console.log(error);
-  })
-  
   return (
     <a href={link} target="_blank" rel="noopener noreferrer" className='card-link'>
       <div className='card'>
