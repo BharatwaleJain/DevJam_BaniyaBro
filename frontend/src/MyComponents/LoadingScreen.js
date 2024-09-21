@@ -20,7 +20,7 @@ const LoadingScreen = () => {
     setEmail(emailValue);
 
     if (!validateEmail(emailValue)) {
-      setError('Invalid email address');
+      setError('Invalid Email Address Format');
     } else {
       setError('');
     }
@@ -49,14 +49,14 @@ const LoadingScreen = () => {
       {/* Input for Email */}
       <input
         type="text"
-        placeholder="Enter Email"
+        placeholder="Enter Email Address"
         value={email}
         onChange={handleEmailChange}
         className="txt-input"
       />
       {error && <p className="error-message">{error}</p>}
       <br />
-      <button onClick={handleNavigate} disabled={!email}>Get Started</button>
+      <button onClick={handleNavigate} disabled={!email || !validateEmail(email)}>Get Started</button>
         </div>
       )}
     </div>

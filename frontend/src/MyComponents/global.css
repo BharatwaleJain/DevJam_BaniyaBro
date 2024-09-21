@@ -41,7 +41,53 @@ body, html {
     margin-bottom: 10px;
   }
   
+  .txt-input {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(241, 119, 13);
+    color: rgb(241, 119, 13); /* Orange text */
+    font-weight: bold; /* Bold text */
+    padding:10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #target-price{
+    border-right: none;
+    border-radius: 5px 0 0 5px; 
+    max-width: 92%;
+  }
+  #target-price:focus{
+    outline: none;
+  }
   
+  .inputinfo{
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(241, 119, 13);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 92%;
+    margin-bottom: 20px;
+  }
+
+  .inputinfo button {
+    margin: 0;
+    max-width: 8%;
+    height: 100%;
+    background-color: rgb(241, 119, 13);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
 
   button {
     display: inline-block;
@@ -62,6 +108,11 @@ body, html {
     background-color: #2980b9;
   }
   
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
   @media (max-width: 600px) {
     .loader {
       width: 80px;
@@ -74,7 +125,6 @@ body, html {
       font-size: 18px;
     }
   }
-  
   
   .card {
     background-color: #1e1e1e;
@@ -152,39 +202,6 @@ body, html {
     .card-content .price {
       font-size: 1em;
     }
-  }
-
-  .txt-input {
-    background-color: rgba(0, 0, 0, 0.1); /* Black background with 10% opacity */
-     
-    color: rgb(241, 119, 13); /* Orange text */
-    font-weight: bold; /* Bold text */
-    padding:10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    border: 0;
-    max-width: 92%;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .txt-input:focus{
-    outline: none;
-  }
-
-  .inputinfo{
-    display: flex;
-    align-items: center;
-    border: 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgb(241, 119, 13);
-    border-radius: 10px;
-  }
-
-  .inputinfo button{
-    margin: 0;
-    width: 8%;
-    
   }
 
 

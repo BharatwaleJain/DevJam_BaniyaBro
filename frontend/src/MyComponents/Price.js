@@ -7,8 +7,8 @@ const Price = () => {
   const [price, setPrice] = useState('');
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate('');
+  const handleNotify = () => {
+    console.log(price);
   };
 
   return (
@@ -20,8 +20,11 @@ const Price = () => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
         className="txt-input"
+        id="target-price"
       />
-      <button onClick={handleNavigate} disabled={!price}>N</button>
+      <button onClick={handleNotify} disabled={!price}>
+        <i className="fas fa-bell"></i>
+      </button>
     </div>
   );
 }
