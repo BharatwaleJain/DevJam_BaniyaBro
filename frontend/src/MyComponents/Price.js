@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import "./global.css";
 import axios from 'axios';
+import { FaBell } from 'react-icons/fa';
 
 const Price = () => {
   const [price, setPrice] = useState('');
-  const navigate = useNavigate();
 
   const handleNotify = () => {
     console.log(price);
@@ -23,7 +22,7 @@ const Price = () => {
         id="target-price"
       />
       <button onClick={handleNotify} disabled={!price}>
-        <i className="fas fa-bell"></i>
+        <FaBell /> {}
       </button>
     </div>
   );
