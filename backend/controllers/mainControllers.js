@@ -5,10 +5,14 @@ const { getJson } = require("serpapi");
 const { json } = require('express');
 const { Product } = require('../models/model')
 const { User } = require('../models/model')
+const { Notify } = require('../models/model')
+
 
 const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
 
 let emailValue; 
+let priceValue;
+let prodTitle;
 
 exports.getEmail = async (req,res) => {
     emailValue  = req.body;
@@ -18,7 +22,6 @@ exports.getEmail = async (req,res) => {
         return res.status(400).json({ error: 'Email is required' });
     }
     req.emailValue = emailValue;
-
 }
 
 exports.getImage = async (req,res) => {
@@ -70,7 +73,7 @@ exports.getImage = async (req,res) => {
               }
             );
           });
-         
+         prodTitle = googleLensResults.title
         //console.log("Google Lens visual matches:", googleLensResults);
 
         //Shopping API
@@ -118,6 +121,7 @@ exports.getImage = async (req,res) => {
          res.end(String(err));
          return;
      }    
+
 }
 
 exports.sendData = async (req, res) => {
@@ -141,4 +145,20 @@ exports.sendData = async (req, res) => {
             message: 'server error'
         })   
     }
+}
+
+
+exports.getPrice = async (req,res) => {
+    priceValue = req.body;
+    if(!priceValue){
+        console.log('Price not received');
+        return res.status(400).json({error : 'Price is required'});
+    }
+    console.log(priceValue.price)
+
+    const newNotify = await Notify.create({
+        email : emailValue.emailValue,
+        productName : prodTitle,
+        price : priceValue.price
+    })
 }
