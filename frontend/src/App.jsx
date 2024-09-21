@@ -26,11 +26,11 @@ function App() {
       </video>
       <Router>
           <Routes>
-            <Route path="/start" element={
+            <Route path="/" element={
               <div className="board">
                 <Loader />
               </div>} />
-            <Route path="/" element={
+            <Route path="/start" element={
               <div className="board">
                 <div className="instructions">
                   <Logo />

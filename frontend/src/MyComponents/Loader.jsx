@@ -19,7 +19,7 @@ const Loader = () => {
 
   useEffect(() => {
     if (!loading) {
-      navigate('/');
+      navigate('/start');
     }
   }, [loading, navigate]);
 
