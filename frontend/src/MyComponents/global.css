@@ -71,7 +71,7 @@ body, html {
     border: 1px solid rgb(241, 119, 13);
     border-radius: 6px;
     width: 100%;
-    max-width: 80%;
+    max-width: 100%;
     margin-bottom: 20px;
   }
 
@@ -133,19 +133,22 @@ body, html {
     text-align: left;
     flex-direction: row;
     height: 60%;
+    max-height: 200px;
     margin: 20px 50px;
     border-radius: 30px;
     opacity: 0.7;
     padding: 20px;
     border: 1px solid orange;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
+    
     box-sizing: border-box;
 }
   
   .card img {
-    width: 30%;
-    height: auto;
+    max-height: 90%;
+    height: 100%;
+    
     border-radius: 10px;
     margin-right: 20px;
   }
@@ -159,6 +162,7 @@ body, html {
     text-decoration: none;
     color: inherit;
     display: block;
+    margin: 0 ;
   }
   
   .card-content {
@@ -177,7 +181,7 @@ body, html {
     font-size: 1.2em;
     color: #f1a10d;
   }
-  
+/*   
   @media (max-width: 600px) {
     .card {
       flex-direction: row;
@@ -201,6 +205,12 @@ body, html {
     .card-content .price {
       font-size: 1em;
     }
-  }
+  } */
 
+#contain{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  align-items: center;
+}
 

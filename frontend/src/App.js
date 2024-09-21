@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<LoadingScreen />} />
           <Route path="/upload" element={<ImageUploader />} />
           <Route path="/list" element={
-            <div>
+            <div id='contain'>
               <Price />
               <Item />
               <Item />
