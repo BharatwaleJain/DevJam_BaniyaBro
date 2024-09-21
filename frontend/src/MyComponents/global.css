@@ -225,3 +225,39 @@ body, html {
   align-items: center;
 }
 
+.logo{
+  background-color: #070607;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+  font-family:Inter;
+
+}
+
+.logo h1{
+  border-right: 5px solid orangered;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+  typing 2s steps(9),
+  cursor .4s step-end infinite alternate;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.Baniya{
+  color: #FFAB09;
+}
+
+.Bro{
+  color: white;
+}
+
+@keyframes cursor{
+  50%{border-color: transparent;}
+}
+@keyframes typing {
+  from { width: 0; } /* Start with no width */
+  to { width: 100%; } /* Animate to full width */
+}

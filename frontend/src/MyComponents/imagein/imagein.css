@@ -36,7 +36,7 @@ input[type="file"] {
   display: inline-block;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: rgb(241, 119, 13);
+  background-color: #FFAB09;
   color: white;
   border: none;
   border-radius: 5px;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./global.css";
 import image from "./header/logo.png";
-
+import Logoanimation from './logoanimation/logoanimation';
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
@@ -58,7 +58,7 @@ const LoadingScreen = () => {
         <div className="loader"></div>
       ) : (
         <div className="instructions">
-          <img src={image} alt="Instructions" className="instruction-image" />
+          <Logoanimation/>
 
       {/* Input for Email */}
       <input
