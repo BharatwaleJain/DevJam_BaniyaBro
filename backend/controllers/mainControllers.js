@@ -23,6 +23,7 @@ exports.getEmail = async (req,res) => {
         return res.status(400).json({ error: 'Email is required' });
     }
     req.emailValue = emailValue;
+    console.log(emailValue, emailValue.emailValue)
 }
 
 exports.getImage = async (req,res) => {
@@ -110,7 +111,7 @@ exports.getImage = async (req,res) => {
         }
 
         const newUser = await User.create({
-            mail : emailValue.emailValue,
+            mail : req.emailValue,
             productId : num 
         })
         return
