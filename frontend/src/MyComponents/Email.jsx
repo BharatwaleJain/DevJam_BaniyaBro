@@ -15,7 +15,7 @@ const Email = () => {
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
     setEmail(emailValue);
-    fetch('http://localhost:8000/submit-email', {
+    fetch('https://baniyabro.onrender.com/submit-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

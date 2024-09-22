@@ -10,7 +10,7 @@ const ItemList = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8000/getData')
+    axios.get('https://baniyabro.onrender.com/getData')
       .then((response) => {
         console.log("This is the respone",response)
         setItems(response.data.data);

@@ -7,7 +7,7 @@ const Price = () => {
 
   const handleNotify = () => {
     console.log(price);
-    fetch('http://localhost:8000/input-price', {
+    fetch('https://baniyabro.onrender.com/input-price', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

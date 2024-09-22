@@ -11,7 +11,7 @@ const ImageUploader = () => {
     const file = e.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
-    const response = axios.post('http://localhost:8000/upload', formdata, {
+    const response = axios.post('https://baniyabro.onrender.com/upload', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
