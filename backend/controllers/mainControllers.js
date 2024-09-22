@@ -9,6 +9,7 @@ const { Notify } = require('../models/model')
 
 
 const IMGBB_API_KEY = "8a496163927b9d9e0480e2850c8f8047";
+const GOOGLE_API_KEY = "86c8c71ddb4a335aa4287b3703f534421cb156d0a324333419b3826469195717"
 
 let emailValue; 
 let priceValue;
@@ -62,7 +63,7 @@ exports.getImage = async (req,res) => {
               {
                 engine: "google_lens",
                 url:imgBBResponse.data.data.url,
-                api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+                api_key: GOOGLE_API_KEY,
               },
               (json) => {
                 if (json) {
@@ -82,7 +83,7 @@ exports.getImage = async (req,res) => {
               {
                 engine: "google_shopping",
                 q: googleLensResults.title,
-                api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+                api_key: GOOGLE_API_KEY,
                 gl:"in"
               },
               (json) => {

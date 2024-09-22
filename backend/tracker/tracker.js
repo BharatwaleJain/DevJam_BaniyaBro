@@ -6,12 +6,13 @@ exports.printdata = async () => {
     const data_length = data.length
 
     for(let i=0;i<data_length;i++){
+        console.log(`${i}DATA`)
         const shoppingResults = await new Promise((resolve, reject) => {
             getJson(
             {
                 engine: "google_shopping",
                 q: data[i].productName,
-                api_key: "e46eb16e06b86f316f7c4fcb0059c24f949e1cec889d9dcbdfc087f140452d40",
+                api_key: "86c8c71ddb4a335aa4287b3703f534421cb156d0a324333419b3826469195717",
                 gl:"in"
             },
             (json) => {
@@ -24,5 +25,6 @@ exports.printdata = async () => {
             );
         });
         console.log(shoppingResults)
+
     }
 }
